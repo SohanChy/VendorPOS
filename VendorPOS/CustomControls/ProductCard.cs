@@ -10,9 +10,20 @@ namespace VendorPOS
             InitializeComponent();
         }
 
+        private Database.Product product;
+
+        public ProductCard(Database.Product p)
+        {
+            InitializeComponent();
+            product = p;
+        }
+
         private void ProductCard_Load(object sender, EventArgs e)
         {
-
+            name.Text = product.name;
+            desc.Text = product.description;
+            price.Text = "BDT " + product.price.ToString();
+            pictureBox.ImageLocation = product.image;
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -26,6 +37,11 @@ namespace VendorPOS
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void name_Click(object sender, EventArgs e)
         {
 
         }

@@ -32,8 +32,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.addButoon = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuDropdown1 = new Bunifu.Framework.UI.BunifuDropdown();
-            this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.categoryDropdown = new Bunifu.Framework.UI.BunifuDropdown();
+            this.searchBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.productFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -44,6 +45,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.productFlow, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -56,8 +58,8 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.addButoon);
-            this.flowLayoutPanel1.Controls.Add(this.bunifuDropdown1);
-            this.flowLayoutPanel1.Controls.Add(this.bunifuMetroTextbox1);
+            this.flowLayoutPanel1.Controls.Add(this.categoryDropdown);
+            this.flowLayoutPanel1.Controls.Add(this.searchBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -99,40 +101,49 @@
             this.addButoon.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButoon.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
-            // bunifuDropdown1
+            // categoryDropdown
             // 
-            this.bunifuDropdown1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown1.BorderRadius = 3;
-            this.bunifuDropdown1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bunifuDropdown1.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown1.Items = new string[0];
-            this.bunifuDropdown1.Location = new System.Drawing.Point(164, 3);
-            this.bunifuDropdown1.Name = "bunifuDropdown1";
-            this.bunifuDropdown1.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuDropdown1.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuDropdown1.selectedIndex = -1;
-            this.bunifuDropdown1.Size = new System.Drawing.Size(177, 48);
-            this.bunifuDropdown1.TabIndex = 2;
+            this.categoryDropdown.BackColor = System.Drawing.Color.Transparent;
+            this.categoryDropdown.BorderRadius = 3;
+            this.categoryDropdown.Dock = System.Windows.Forms.DockStyle.Left;
+            this.categoryDropdown.ForeColor = System.Drawing.Color.White;
+            this.categoryDropdown.Items = new string[0];
+            this.categoryDropdown.Location = new System.Drawing.Point(164, 3);
+            this.categoryDropdown.Name = "categoryDropdown";
+            this.categoryDropdown.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.categoryDropdown.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.categoryDropdown.selectedIndex = -1;
+            this.categoryDropdown.Size = new System.Drawing.Size(177, 48);
+            this.categoryDropdown.TabIndex = 2;
+            this.categoryDropdown.onItemSelected += new System.EventHandler(this.categoryDropdown_onItemSelected);
             // 
-            // bunifuMetroTextbox1
+            // searchBox
             // 
-            this.bunifuMetroTextbox1.BorderColorFocused = System.Drawing.Color.Blue;
-            this.bunifuMetroTextbox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox1.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.bunifuMetroTextbox1.BorderThickness = 3;
-            this.bunifuMetroTextbox1.CausesValidation = false;
-            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bunifuMetroTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox1.isPassword = false;
-            this.bunifuMetroTextbox1.Location = new System.Drawing.Point(348, 4);
-            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
-            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(370, 46);
-            this.bunifuMetroTextbox1.TabIndex = 3;
-            this.bunifuMetroTextbox1.Text = "Search Product Name";
-            this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchBox.BorderColorFocused = System.Drawing.Color.Blue;
+            this.searchBox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.searchBox.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.searchBox.BorderThickness = 3;
+            this.searchBox.CausesValidation = false;
+            this.searchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.searchBox.isPassword = false;
+            this.searchBox.Location = new System.Drawing.Point(348, 4);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(370, 46);
+            this.searchBox.TabIndex = 3;
+            this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchBox.OnValueChanged += new System.EventHandler(this.searchBox_OnValueChanged);
+            // 
+            // productFlow
+            // 
+            this.productFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productFlow.Location = new System.Drawing.Point(3, 61);
+            this.productFlow.Name = "productFlow";
+            this.productFlow.Size = new System.Drawing.Size(897, 399);
+            this.productFlow.TabIndex = 1;
             // 
             // ProductControl
             // 
@@ -152,8 +163,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Bunifu.Framework.UI.BunifuFlatButton addButoon;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown1;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox searchBox;
+        private Bunifu.Framework.UI.BunifuDropdown categoryDropdown;
+        private System.Windows.Forms.FlowLayoutPanel productFlow;
 
     }
 }
