@@ -1,6 +1,6 @@
-﻿namespace VendorPOS
+﻿namespace VendorPOS.Pages
 {
-    partial class CategoryControl
+    partial class CategoryPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryPage));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.addButoon = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.ProductPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.addButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.searchBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.categoryFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,152 +45,104 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ProductPanel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.categoryFlow, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.527F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.473F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(903, 463);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 460);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.addButoon);
-            this.flowLayoutPanel1.Controls.Add(this.bunifuFlatButton2);
-            this.flowLayoutPanel1.Controls.Add(this.bunifuFlatButton3);
-            this.flowLayoutPanel1.Controls.Add(this.bunifuFlatButton4);
+            this.flowLayoutPanel1.Controls.Add(this.addButton);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.searchBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(897, 52);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(894, 51);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // addButoon
+            // addButton
             // 
-            this.addButoon.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.addButoon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.addButoon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addButoon.BorderRadius = 0;
-            this.addButoon.ButtonText = "  Add Category";
-            this.addButoon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addButoon.Iconcolor = System.Drawing.Color.Transparent;
-            this.addButoon.Iconimage = ((System.Drawing.Image)(resources.GetObject("addButoon.Iconimage")));
-            this.addButoon.Iconimage_right = null;
-            this.addButoon.Iconimage_right_Selected = null;
-            this.addButoon.Iconimage_Selected = null;
-            this.addButoon.IconZoom = 90D;
-            this.addButoon.IsTab = false;
-            this.addButoon.Location = new System.Drawing.Point(3, 3);
-            this.addButoon.Name = "addButoon";
-            this.addButoon.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.addButoon.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.addButoon.OnHoverTextColor = System.Drawing.Color.White;
-            this.addButoon.selected = false;
-            this.addButoon.Size = new System.Drawing.Size(155, 48);
-            this.addButoon.TabIndex = 1;
-            this.addButoon.Textcolor = System.Drawing.Color.White;
-            this.addButoon.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButoon.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
+            this.addButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addButton.BorderRadius = 0;
+            this.addButton.ButtonText = "  Add Category";
+            this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addButton.DisabledColor = System.Drawing.Color.Gray;
+            this.addButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.addButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("addButton.Iconimage")));
+            this.addButton.Iconimage_right = null;
+            this.addButton.Iconimage_right_Selected = null;
+            this.addButton.Iconimage_Selected = null;
+            this.addButton.IconMarginLeft = 0;
+            this.addButton.IconMarginRight = 0;
+            this.addButton.IconRightVisible = true;
+            this.addButton.IconRightZoom = 0D;
+            this.addButton.IconVisible = true;
+            this.addButton.IconZoom = 90D;
+            this.addButton.IsTab = false;
+            this.addButton.Location = new System.Drawing.Point(3, 3);
+            this.addButton.Name = "addButton";
+            this.addButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.addButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.addButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.addButton.selected = false;
+            this.addButton.Size = new System.Drawing.Size(121, 48);
+            this.addButton.TabIndex = 1;
+            this.addButton.Text = "  Add Category";
+            this.addButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addButton.Textcolor = System.Drawing.Color.White;
+            this.addButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // bunifuFlatButton2
+            // panel1
             // 
-            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton2.BorderRadius = 0;
-            this.bunifuFlatButton2.ButtonText = "     Bunifu Flat Button";
-            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
-            this.bunifuFlatButton2.Iconimage_right = null;
-            this.bunifuFlatButton2.Iconimage_right_Selected = null;
-            this.bunifuFlatButton2.Iconimage_Selected = null;
-            this.bunifuFlatButton2.IconZoom = 90D;
-            this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(164, 3);
-            this.bunifuFlatButton2.Name = "bunifuFlatButton2";
-            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton2.selected = false;
-            this.bunifuFlatButton2.Size = new System.Drawing.Size(155, 48);
-            this.bunifuFlatButton2.TabIndex = 2;
-            this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(130, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 48);
+            this.panel1.TabIndex = 4;
             // 
-            // bunifuFlatButton3
+            // searchBox
             // 
-            this.bunifuFlatButton3.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton3.BorderRadius = 0;
-            this.bunifuFlatButton3.ButtonText = "     Bunifu Flat Button";
-            this.bunifuFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton3.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton3.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton3.Iconimage")));
-            this.bunifuFlatButton3.Iconimage_right = null;
-            this.bunifuFlatButton3.Iconimage_right_Selected = null;
-            this.bunifuFlatButton3.Iconimage_Selected = null;
-            this.bunifuFlatButton3.IconZoom = 90D;
-            this.bunifuFlatButton3.IsTab = false;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(325, 3);
-            this.bunifuFlatButton3.Name = "bunifuFlatButton3";
-            this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton3.selected = false;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(155, 48);
-            this.bunifuFlatButton3.TabIndex = 3;
-            this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBox.BorderColorFocused = System.Drawing.Color.Blue;
+            this.searchBox.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.searchBox.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.searchBox.BorderThickness = 3;
+            this.searchBox.CausesValidation = false;
+            this.searchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.searchBox.isPassword = false;
+            this.searchBox.Location = new System.Drawing.Point(337, 4);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(318, 46);
+            this.searchBox.TabIndex = 3;
+            this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchBox.OnValueChanged += new System.EventHandler(this.searchBox_OnValueChanged);
             // 
-            // bunifuFlatButton4
+            // categoryFlow
             // 
-            this.bunifuFlatButton4.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton4.BorderRadius = 0;
-            this.bunifuFlatButton4.ButtonText = "     Bunifu Flat Button";
-            this.bunifuFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton4.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton4.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton4.Iconimage")));
-            this.bunifuFlatButton4.Iconimage_right = null;
-            this.bunifuFlatButton4.Iconimage_right_Selected = null;
-            this.bunifuFlatButton4.Iconimage_Selected = null;
-            this.bunifuFlatButton4.IconZoom = 90D;
-            this.bunifuFlatButton4.IsTab = false;
-            this.bunifuFlatButton4.Location = new System.Drawing.Point(486, 3);
-            this.bunifuFlatButton4.Name = "bunifuFlatButton4";
-            this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuFlatButton4.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton4.selected = false;
-            this.bunifuFlatButton4.Size = new System.Drawing.Size(175, 48);
-            this.bunifuFlatButton4.TabIndex = 4;
-            this.bunifuFlatButton4.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton4.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.categoryFlow.Location = new System.Drawing.Point(3, 60);
+            this.categoryFlow.Name = "categoryFlow";
+            this.categoryFlow.Size = new System.Drawing.Size(894, 397);
+            this.categoryFlow.TabIndex = 1;
             // 
-            // ProductPanel
-            // 
-            this.ProductPanel.AutoScroll = true;
-            this.ProductPanel.AutoSize = true;
-            this.ProductPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProductPanel.Location = new System.Drawing.Point(3, 61);
-            this.ProductPanel.Name = "ProductPanel";
-            this.ProductPanel.Size = new System.Drawing.Size(897, 399);
-            this.ProductPanel.TabIndex = 1;
-            // 
-            // CategoryControl
+            // CategoryPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "CategoryControl";
-            this.Size = new System.Drawing.Size(903, 463);
+            this.Name = "CategoryPage";
+            this.Size = new System.Drawing.Size(900, 460);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -201,11 +152,10 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Bunifu.Framework.UI.BunifuFlatButton addButoon;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton3;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton4;
-        private System.Windows.Forms.FlowLayoutPanel ProductPanel;
+        private Bunifu.Framework.UI.BunifuFlatButton addButton;
+        private System.Windows.Forms.Panel panel1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox searchBox;
+        private System.Windows.Forms.FlowLayoutPanel categoryFlow;
 
     }
 }

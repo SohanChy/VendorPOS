@@ -1,21 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VendorPOS
+namespace VendorPOS.Pages
 {
-    public partial class CategoryControl : UserControl
+    public partial class CategoryPage : UserControl
     {
-        public CategoryControl()
+        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
+        private System.Data.Linq.Table<Database.Category> categoryList;
+        private IEnumerable<Database.Category> cquery;
+
+        public CategoryPage()
         {
             InitializeComponent();
+            loadData();
         }
 
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        private void loadData()
         {
-            for (int x = 0; x < 20; x++)
+            cquery = DB.Categories.OrderByDescending(x => x.Id);
+            categoryList = DB.Categories;
+            populateCategories();
+        }
+
+        private void searchBox_OnValueChanged(object sender, EventArgs e)
+        {
+            cquery = from c in categoryList
+                     where c.name.Contains(searchBox.Text)
+                     select c;
+            populateCategories();
+        }
+
+        private void populateCategories()
+        {
+            categoryFlow.Controls.Clear();
+            
+            foreach (Database.Category c in cquery)
             {
-                    ProductPanel.Controls.Add(new CategoryCard());
+                categoryFlow.Controls.Add(new CategoryCard(c));
             }
         }
+
     }
 }
