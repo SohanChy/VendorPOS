@@ -48,7 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.52">
-      <HintPath>..\..\..\Bunifu FrameWork\Bunifu_UI_v1.52.dll</HintPath>
+      <HintPath>libs\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -100,6 +100,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InvoicePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\InvoicePage.Designer.cs">
+      <DependentUpon>InvoicePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\InvoicePage.resx">
+      <DependentUpon>InvoicePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ProductPage.resx">
       <DependentUpon>ProductPage.cs</DependentUpon>
@@ -189,10 +198,6 @@
   <ItemGroup>
     <Content Include="Database\FileDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database\FileDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>FileDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

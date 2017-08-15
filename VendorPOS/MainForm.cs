@@ -59,10 +59,7 @@ namespace VendorPOS
 
         private void btn_New_Click(object sender, EventArgs e)
         {
-//            flowLayoutPanel2.Controls.Clear();
-
-            
-
+            ChangeContainer(new Pages.InvoicePage());
 
         }
 
