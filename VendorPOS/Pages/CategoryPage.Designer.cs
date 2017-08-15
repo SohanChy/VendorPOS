@@ -99,6 +99,7 @@
             this.addButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addButton.Textcolor = System.Drawing.Color.White;
             this.addButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addButton.Click += new System.EventHandler(this.addCategoryButton_Click);
             // 
             // panel1
             // 

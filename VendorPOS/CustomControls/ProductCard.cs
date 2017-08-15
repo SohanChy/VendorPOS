@@ -45,5 +45,10 @@ namespace VendorPOS
         {
 
         }
+
+        private void ActionButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace VendorPOS.Pages
         private System.Data.Linq.Table<Database.Product>  productList;
 
         private IEnumerable<Database.Product> pquery;
+        private int selectedCatId;
         public ProductPage()
         {
             InitializeComponent();
@@ -44,10 +45,21 @@ namespace VendorPOS.Pages
 
         private void searchBox_OnValueChanged(object sender, EventArgs e)
         {
-            pquery = from p in productList
-                     where p.name.Contains(searchBox.Text)
-                     select p;
-            populateProducts();
+
+            if (selectedCatId != 0)
+            {
+                pquery = from p in productList
+                         where p.name.Contains(searchBox.Text)
+                         && p.category_id == selectedCatId
+                         select p;
+            }
+            else
+            {
+                pquery = from p in productList
+                         where p.name.Contains(searchBox.Text)
+                         select p;
+            }
+                        populateProducts();
         }
 
         private void categoryDropdown_onItemSelected(object sender, EventArgs e)
@@ -55,11 +67,11 @@ namespace VendorPOS.Pages
             var cquery = from cat in categoryList
                     where cat.name == categoryDropdown.selectedValue
                            select cat.Id;
-            int sel = cquery.First();
+            selectedCatId = cquery.First();
 
-            pquery = from p in productList 
-                                                   where p.category_id == sel
-                                                    select p;
+            pquery = from p in productList
+                     where p.category_id == selectedCatId
+                     select p;
 
             populateProducts();
             

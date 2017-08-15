@@ -97,6 +97,7 @@
             this.ActionButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ActionButton.Textcolor = System.Drawing.Color.White;
             this.ActionButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActionButton.Click += new System.EventHandler(this.ActionButton_Click);
             // 
             // price
             // 

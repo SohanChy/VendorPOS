@@ -38,6 +38,7 @@
             this.pictureBox.Location = new System.Drawing.Point(3, 3);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(71, 50);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
@@ -49,6 +50,7 @@
             this.name.Size = new System.Drawing.Size(188, 29);
             this.name.TabIndex = 1;
             this.name.Text = "Name";
+            this.name.Click += new System.EventHandler(this.name_Click);
             // 
             // CategoryCard
             // 
@@ -61,6 +63,7 @@
             this.Name = "CategoryCard";
             this.Size = new System.Drawing.Size(269, 56);
             this.Load += new System.EventHandler(this.CategoryCard_Load);
+            this.DoubleClick += new System.EventHandler(this.CategoryCard_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 

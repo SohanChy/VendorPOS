@@ -60,7 +60,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 89);
+            this.panel1.Size = new System.Drawing.Size(1043, 89);
             this.panel1.TabIndex = 103;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -73,7 +73,7 @@
             this.panel3.Controls.Add(this.label_ApplicationName);
             this.panel3.Location = new System.Drawing.Point(356, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(347, 83);
+            this.panel3.Size = new System.Drawing.Size(377, 83);
             this.panel3.TabIndex = 1;
             // 
             // label1
@@ -83,7 +83,7 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(27, 53);
+            this.label1.Location = new System.Drawing.Point(42, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(297, 16);
             this.label1.TabIndex = 8;
@@ -97,7 +97,7 @@
             this.label_ApplicationName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_ApplicationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ApplicationName.ForeColor = System.Drawing.Color.Black;
-            this.label_ApplicationName.Location = new System.Drawing.Point(75, 10);
+            this.label_ApplicationName.Location = new System.Drawing.Point(90, 10);
             this.label_ApplicationName.Name = "label_ApplicationName";
             this.label_ApplicationName.Size = new System.Drawing.Size(148, 29);
             this.label_ApplicationName.TabIndex = 7;
@@ -393,7 +393,7 @@
             this.containerPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.containerPane.Location = new System.Drawing.Point(196, 89);
             this.containerPane.Name = "containerPane";
-            this.containerPane.Size = new System.Drawing.Size(817, 474);
+            this.containerPane.Size = new System.Drawing.Size(847, 474);
             this.containerPane.TabIndex = 105;
             // 
             // doubleBitmapControl1
@@ -409,7 +409,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 563);
+            this.ClientSize = new System.Drawing.Size(1043, 563);
             this.Controls.Add(this.containerPane);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);

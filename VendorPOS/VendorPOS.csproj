@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\CategoryDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CategoryDialog.Designer.cs">
+      <DependentUpon>CategoryDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\DataModels.cs">
       <DependentUpon>DataModels.dbml</DependentUpon>
     </Compile>
@@ -122,6 +128,9 @@
     </None>
     <EmbeddedResource Include="CustomControls\CategoryCard.resx">
       <DependentUpon>CategoryCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CategoryDialog.resx">
+      <DependentUpon>CategoryDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\ProductCard.resx">
       <DependentUpon>ProductCard.cs</DependentUpon>
