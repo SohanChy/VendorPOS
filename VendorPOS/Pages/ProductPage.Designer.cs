@@ -1,6 +1,6 @@
-﻿namespace VendorPOS
+﻿namespace VendorPOS.Pages
 {
-    partial class ProductControl
+    partial class ProductPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductPage));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.addButoon = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.categoryDropdown = new Bunifu.Framework.UI.BunifuDropdown();
             this.searchBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.productFlow = new System.Windows.Forms.FlowLayoutPanel();
@@ -52,18 +53,19 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.527F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.473F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(903, 463);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 460);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.addButoon);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.categoryDropdown);
             this.flowLayoutPanel1.Controls.Add(this.searchBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(897, 52);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(894, 51);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // addButoon
@@ -93,13 +95,20 @@
             this.addButoon.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.addButoon.OnHoverTextColor = System.Drawing.Color.White;
             this.addButoon.selected = false;
-            this.addButoon.Size = new System.Drawing.Size(155, 48);
+            this.addButoon.Size = new System.Drawing.Size(121, 48);
             this.addButoon.TabIndex = 1;
             this.addButoon.Text = "  Add Products";
             this.addButoon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addButoon.Textcolor = System.Drawing.Color.White;
             this.addButoon.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButoon.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(130, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(97, 48);
+            this.panel1.TabIndex = 4;
             // 
             // categoryDropdown
             // 
@@ -108,12 +117,12 @@
             this.categoryDropdown.Dock = System.Windows.Forms.DockStyle.Left;
             this.categoryDropdown.ForeColor = System.Drawing.Color.White;
             this.categoryDropdown.Items = new string[0];
-            this.categoryDropdown.Location = new System.Drawing.Point(164, 3);
+            this.categoryDropdown.Location = new System.Drawing.Point(233, 3);
             this.categoryDropdown.Name = "categoryDropdown";
             this.categoryDropdown.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.categoryDropdown.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.categoryDropdown.selectedIndex = -1;
-            this.categoryDropdown.Size = new System.Drawing.Size(177, 48);
+            this.categoryDropdown.Size = new System.Drawing.Size(131, 48);
             this.categoryDropdown.TabIndex = 2;
             this.categoryDropdown.onItemSelected += new System.EventHandler(this.categoryDropdown_onItemSelected);
             // 
@@ -129,10 +138,10 @@
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.searchBox.isPassword = false;
-            this.searchBox.Location = new System.Drawing.Point(348, 4);
+            this.searchBox.Location = new System.Drawing.Point(371, 4);
             this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(370, 46);
+            this.searchBox.Size = new System.Drawing.Size(318, 46);
             this.searchBox.TabIndex = 3;
             this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.searchBox.OnValueChanged += new System.EventHandler(this.searchBox_OnValueChanged);
@@ -140,9 +149,9 @@
             // productFlow
             // 
             this.productFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productFlow.Location = new System.Drawing.Point(3, 61);
+            this.productFlow.Location = new System.Drawing.Point(3, 60);
             this.productFlow.Name = "productFlow";
-            this.productFlow.Size = new System.Drawing.Size(897, 399);
+            this.productFlow.Size = new System.Drawing.Size(894, 397);
             this.productFlow.TabIndex = 1;
             // 
             // ProductControl
@@ -151,7 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ProductControl";
-            this.Size = new System.Drawing.Size(903, 463);
+            this.Size = new System.Drawing.Size(900, 460);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -166,6 +175,7 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox searchBox;
         private Bunifu.Framework.UI.BunifuDropdown categoryDropdown;
         private System.Windows.Forms.FlowLayoutPanel productFlow;
+        private System.Windows.Forms.Panel panel1;
 
     }
 }

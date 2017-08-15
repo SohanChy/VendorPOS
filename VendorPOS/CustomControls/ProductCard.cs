@@ -10,7 +10,7 @@ namespace VendorPOS
             InitializeComponent();
         }
 
-        private Database.Product product;
+        public Database.Product product;
 
         public ProductCard(Database.Product p)
         {

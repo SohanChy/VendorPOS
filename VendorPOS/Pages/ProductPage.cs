@@ -3,16 +3,16 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VendorPOS
+namespace VendorPOS.Pages
 {
-    public partial class ProductControl : UserControl
+    public partial class ProductPage : UserControl
     {
         private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
         private System.Data.Linq.Table<Database.Category> categoryList;
         private System.Data.Linq.Table<Database.Product>  productList;
 
         private IEnumerable<Database.Product> pquery;
-        public ProductControl()
+        public ProductPage()
         {
             InitializeComponent();
             loadData();
@@ -28,6 +28,11 @@ namespace VendorPOS
             }
 
             productList = DB.Products;
+
+            pquery = (from p in productList
+                     orderby p.created_at
+                     select p).Take(10);
+            populateProducts();
             
         }
 

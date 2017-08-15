@@ -79,12 +79,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FileDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CategoryPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Pages\CategoryPage.Designer.cs">
-      <DependentUpon>CategoryPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\CategoryCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +97,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CategoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\CategoryPage.Designer.cs">
+      <DependentUpon>CategoryPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,9 +114,6 @@
     <None Include="Database\DataModels.dbml.layout">
       <DependentUpon>DataModels.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="Pages\CategoryPage.resx">
-      <DependentUpon>CategoryPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\CategoryCard.resx">
       <DependentUpon>CategoryCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\CategoryPage.resx">
+      <DependentUpon>CategoryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ProductPage.resx">
       <DependentUpon>ProductPage.cs</DependentUpon>

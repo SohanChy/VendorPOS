@@ -20,10 +20,7 @@ namespace VendorPOS
 
         }
 
-        private void btn_Products_Click(object sender, EventArgs e)
-        {
-            ChangeContainer(new ProductControl());
-        }
+
 
         private void ChangeContainer(UserControl u)
         {
@@ -37,9 +34,15 @@ namespace VendorPOS
 
         }
 
+
+        private void btn_Products_Click(object sender, EventArgs e)
+        {
+            ChangeContainer(new Pages.ProductPage());
+        }
+
         private void btn_Category_Click(object sender, EventArgs e)
         {
-            ChangeContainer(new CategoryControl());
+            ChangeContainer(new Pages.CategoryPage());
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

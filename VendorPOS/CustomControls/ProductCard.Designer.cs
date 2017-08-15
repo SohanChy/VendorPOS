@@ -85,7 +85,7 @@
             this.ActionButton.IconVisible = true;
             this.ActionButton.IconZoom = 90D;
             this.ActionButton.IsTab = false;
-            this.ActionButton.Location = new System.Drawing.Point(287, 156);
+            this.ActionButton.Location = new System.Drawing.Point(286, 156);
             this.ActionButton.Name = "ActionButton";
             this.ActionButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.ActionButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -112,14 +112,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.price);
             this.Controls.Add(this.ActionButton);
             this.Controls.Add(this.desc);
             this.Controls.Add(this.name);
             this.Controls.Add(this.pictureBox);
             this.Name = "ProductCard";
-            this.Size = new System.Drawing.Size(382, 197);
+            this.Size = new System.Drawing.Size(384, 199);
             this.Load += new System.EventHandler(this.ProductCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
