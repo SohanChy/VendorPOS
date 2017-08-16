@@ -12,11 +12,22 @@ namespace VendorPOS.Pages
 {
     public partial class InvoicePage : UserControl
     {
+        private string id;
         public InvoicePage()
         {
             InitializeComponent();
             this.loadListViewData();
         }
+
+
+        public InvoicePage(VendorPOS.ProductCard pc)
+        {
+            InitializeComponent();
+            this.loadListViewData();
+
+            pc.RaiseCustomEvent += HandleCustomEvent;
+        }
+    
 
         private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
         {
@@ -95,6 +106,13 @@ namespace VendorPOS.Pages
         }
 
     
-
+          // Define what actions to take when the event is raised.
+        void HandleCustomEvent(object sender, CustomEventArgs e)
+        {
+            Console.WriteLine(id + " received this message: {0}", e.Message);
+            string[] row6 = new string[] { "NEW", "NEW", 
+           "NEW beans, sour cream", "***" };
+            dataGridView1.Rows.Add(row6);
+        }
     }
 }

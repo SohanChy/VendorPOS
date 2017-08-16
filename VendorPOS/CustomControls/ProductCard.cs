@@ -3,18 +3,29 @@ using System.Windows.Forms;
 
 namespace VendorPOS
 {
+    //public delegate void EventHandler(object sender, EventArgs e);  
 
-    public delegate Database.Product AddToInvoiceEventHandler(Database.Product product);
+   
 
     public partial class ProductCard : UserControl
     {
 
-        event AddToInvoiceEventHandler AddInvoiceEvent;
+        public event EventHandler<CustomEventArgs> RaiseCustomEvent;
 
+
+        public void DoSomething()
+        {
+            // Write some code that does something useful here
+            // then raise the event. You can also raise an event
+            // before you execute a block of code.
+            OnRaiseCustomEvent(new CustomEventArgs("Did something"));
+
+        }
         public ProductCard()
         {
             InitializeComponent();
         }
+
 
         public Database.Product product;
 
@@ -54,9 +65,53 @@ namespace VendorPOS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.DoSomething();
+        }
 
-           
 
+        private void handleInvoiceAdded() {
+
+            name.Text = "Hello";
+        
+        }
+
+
+         protected virtual void OnRaiseCustomEvent(CustomEventArgs e)
+        {
+            // Make a temporary copy of the event to avoid possibility of
+            // a race condition if the last subscriber unsubscribes
+            // immediately after the null check and before the event is raised.
+            EventHandler<CustomEventArgs> handler = RaiseCustomEvent;
+
+            // Event will be null if there are no subscribers
+            if (handler != null)
+            {
+                // Format the string to send inside the CustomEventArgs parameter
+                e.Message += String.Format(" at {0}", DateTime.Now.ToString());
+
+                // Use the () operator to raise the event.
+                handler(this, e);
+            }
+        }
+
+
+
+    }
+
+
+    // Define a class to hold custom event info
+    public class CustomEventArgs : EventArgs
+    {
+        public CustomEventArgs(string s)
+        {
+            message = s;
+        }
+        private string message;
+
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
         }
     }
 }

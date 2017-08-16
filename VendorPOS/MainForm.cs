@@ -62,7 +62,7 @@ namespace VendorPOS
 
         private void btn_New_Click(object sender, EventArgs e)
         {
-            ChangeContainer(new Pages.InvoicePage());
+            ChangeContainer(new Pages.InvoicePage(new VendorPOS.ProductCard()));
 
         }
 
