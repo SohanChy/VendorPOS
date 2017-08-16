@@ -3,8 +3,14 @@ using System.Windows.Forms;
 
 namespace VendorPOS
 {
+
+    public delegate Database.Product AddToInvoiceEventHandler(Database.Product product);
+
     public partial class ProductCard : UserControl
     {
+
+        event AddToInvoiceEventHandler AddInvoiceEvent;
+
         public ProductCard()
         {
             InitializeComponent();
@@ -43,6 +49,13 @@ namespace VendorPOS
 
         private void name_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+           
 
         }
     }
