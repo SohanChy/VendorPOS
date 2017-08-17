@@ -12,6 +12,7 @@ namespace VendorPOS.Pages
 {
     public partial class InvoicePage : UserControl
     {
+
         private string id;
         public InvoicePage()
         {
@@ -24,9 +25,10 @@ namespace VendorPOS.Pages
         {
             InitializeComponent();
             this.loadListViewData();
-
             pc.RaiseCustomEvent += HandleCustomEvent;
         }
+
+
     
 
         private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
@@ -113,6 +115,13 @@ namespace VendorPOS.Pages
             string[] row6 = new string[] { "NEW", "NEW", 
            "NEW beans, sour cream", "***" };
             dataGridView1.Rows.Add(row6);
+        }
+
+
+        //event handler 
+        public void OnInvoiceAdded(object source,EventArgs e)
+        {
+            Console.WriteLine("In Invoice page Go !!");
         }
     }
 }

@@ -11,7 +11,10 @@ namespace VendorPOS.Pages
         private System.Data.Linq.Table<Database.Category> categoryList;
         private System.Data.Linq.Table<Database.Product>  productList;
 
+        private List<Database.Product> invoiceList = new List<Database.Product>();
+
         private IEnumerable<Database.Product> pquery;
+
         public ProductPage()
         {
             InitializeComponent();
@@ -21,7 +24,6 @@ namespace VendorPOS.Pages
         private void loadData()
         {
             categoryList = DB.Categories;
-
             foreach (var item in categoryList)
             {
                 categoryDropdown.AddItem(item.name);
@@ -68,11 +70,30 @@ namespace VendorPOS.Pages
         private void populateProducts()
         {
             productFlow.Controls.Clear();
+            
 
             foreach (Database.Product p in pquery)
             {
-                productFlow.Controls.Add(new ProductCard(p));
+                VendorPOS.ProductCard productCard = new ProductCard(p);  //publisher
+                productCard.InvoiceAdded += this.OnInvoiceAdded;
+                productFlow.Controls.Add(productCard);
             }
+        }
+
+
+        //event handler 
+        public void OnInvoiceAdded(Database.Product source, EventArgs e)
+        {
+            this.invoiceList.Add(source);
+            invoiceText.Text = "Products Added To Invoice";
+            invoiceCount.Text = this.invoiceList.Count().ToString();
+
+            
+        }
+
+        private void invoiceCount_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

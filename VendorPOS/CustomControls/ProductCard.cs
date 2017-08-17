@@ -3,23 +3,34 @@ using System.Windows.Forms;
 
 namespace VendorPOS
 {
-    //public delegate void EventHandler(object sender, EventArgs e);  
-
-   
+    public delegate void EventHandler(object sender, EventArgs e);  
+    //delegate
+    public delegate void InvoiceAddEvent();
 
     public partial class ProductCard : UserControl
     {
 
         public event EventHandler<CustomEventArgs> RaiseCustomEvent;
+        //private event InvoiceAddEvent InvoiceAdded;
 
+        //new delegate 
+        public delegate void AddToInvoiceEventHandler(Database.Product source,EventArgs args);
+
+        public event AddToInvoiceEventHandler InvoiceAdded;
+
+        protected virtual void OnInvoiceAdded() {
+            if (InvoiceAdded != null)
+            {
+                InvoiceAdded(this.product,EventArgs.Empty);
+            }
+        }
 
         public void DoSomething()
         {
             // Write some code that does something useful here
             // then raise the event. You can also raise an event
             // before you execute a block of code.
-            OnRaiseCustomEvent(new CustomEventArgs("Did something"));
-
+            //OnRaiseCustomEvent(new CustomEventArgs("Did something"));
         }
         public ProductCard()
         {
@@ -65,7 +76,7 @@ namespace VendorPOS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DoSomething();
+            OnInvoiceAdded();
         }
 
 
@@ -93,9 +104,6 @@ namespace VendorPOS
                 handler(this, e);
             }
         }
-
-
-
     }
 
 
