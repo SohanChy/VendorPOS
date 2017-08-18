@@ -85,7 +85,6 @@ namespace VendorPOS.Pages
             dataGridView1.Columns[3].Name = "Quantity";
             dataGridView1.Columns[3].Width = 150;
 
-
             if (this.invoiceList.Count() > 0)
             {
                 object[] rows = new object[this.invoiceList.Count()+1];
@@ -131,7 +130,7 @@ namespace VendorPOS.Pages
         {
             // Create a new PDF document
             PdfDocument document = new PdfDocument();
-            document.Info.Title = "Created with PDFsharp";
+            document.Info.Title = "Invoice";
  
             // Create an empty page
             PdfPage page = document.AddPage();
@@ -139,7 +138,7 @@ namespace VendorPOS.Pages
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
             // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.BoldItalic);
+            XFont font = new XFont("Verdana", 20, XFontStyle.Regular);
  
             // Draw the text
             gfx.DrawString("Hello, World!", font, XBrushes.Black,
