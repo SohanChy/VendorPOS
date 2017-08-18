@@ -79,9 +79,9 @@ namespace VendorPOS.Pages
             dataGridView1.Columns[0].Width = 200;
             dataGridView1.Columns[1].Name = "Description";
             dataGridView1.Columns[1].Width = 200;
-            dataGridView1.Columns[2].Name = "Price";
+            dataGridView1.Columns[2].Name = "Quantity";
             dataGridView1.Columns[2].Width = 200;
-            dataGridView1.Columns[3].Name = "Quantity";
+            dataGridView1.Columns[3].Name = "Price";
             dataGridView1.Columns[3].Width = 150;
 
             if (this.invoiceList.Count() > 0)
@@ -96,14 +96,15 @@ namespace VendorPOS.Pages
                 foreach (var item in DistinctItems)
                 {
                     var duplicates = this.invoiceList.Where(p => p.Id == item.Id);
-                    string[] row = new string[] { item.name, item.description, item.price.ToString(), duplicates.Count().ToString() };
+
+                    string[] row = new string[] { item.name, item.description,duplicates.Count().ToString(), item.price.ToString() };
                     rows[index] = row;
                     index++;
                     this.totalQuantity += duplicates.Count();
                     this.total += (Double) (item.price * duplicates.Count());
                 }
 
-                string[] lastRow = new string[] { "" , "TOTAL " , this.total.ToString(), this.totalQuantity.ToString()};
+                string[] lastRow = new string[] { "" , "TOTAL " , this.totalQuantity.ToString(),this.total.ToString()};
                 rows[index] = lastRow;
                 foreach (string[] rowArray in rows)
                 {
@@ -135,8 +136,8 @@ namespace VendorPOS.Pages
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
             // Create a font
-            XFont font = new XFont("Verdana", 15, XFontStyle.Regular);
-            XFont headFont = new XFont("Verdana", 15, XFontStyle.Bold);
+            XFont font = new XFont("Verdana", 10, XFontStyle.Regular);
+            XFont headFont = new XFont("Verdana", 10, XFontStyle.Bold);
             
             // Draw the text
             gfx.DrawString("VendorPOS Invoice",font,XBrushes.Black,new XRect(0, 0, page.Width, page.Height),
@@ -144,9 +145,6 @@ namespace VendorPOS.Pages
 
             int heightScale = 100;
             int widthScale = 100;
-
-
-
 
             if(dataGridView1.Rows.Count > 1){
 
@@ -158,11 +156,11 @@ namespace VendorPOS.Pages
                       new XRect(200, 50, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
-                gfx.DrawString("Price", headFont, XBrushes.Black,
+                gfx.DrawString("Quantity", headFont, XBrushes.Black,
                       new XRect(400, 50, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
-                gfx.DrawString("Quantity", headFont, XBrushes.Black,
+                gfx.DrawString("Price", headFont, XBrushes.Black,
                       new XRect(500, 50, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
@@ -177,7 +175,14 @@ namespace VendorPOS.Pages
                         new XRect(0, 0 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
 
-                    gfx.DrawString(productDescription.ToString(), font, XBrushes.Black,
+                    var description = productDescription.ToString();
+
+                    if (description.Length > 20)
+                    {
+                        description = description.Substring(0,20);
+                    }
+
+                    gfx.DrawString(description, font, XBrushes.Black,
                         new XRect(200, 0 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
 
@@ -188,7 +193,6 @@ namespace VendorPOS.Pages
                     gfx.DrawString(productQuantity.ToString(), font, XBrushes.Black,
                         new XRect(500, 0 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
-
                     heightScale += 50;
                 }
             }
