@@ -7,8 +7,6 @@ namespace VendorPOS
 {
     public partial class MainForm : Form
     {
-        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
-
         public MainForm()
         {
             InitializeComponent();
@@ -93,7 +91,7 @@ namespace VendorPOS
         //event handler
         public void OnViewInvoice(List<Database.Product> invoiceList, EventArgs args)
         {
-            Pages.InvoicePage myInvoicePage = new Pages.InvoicePage();
+            Pages.InvoicePage myInvoicePage = new Pages.InvoicePage(invoiceList);
             ChangeContainer(myInvoicePage);
         }
     }

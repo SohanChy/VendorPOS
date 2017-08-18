@@ -37,6 +37,7 @@ namespace VendorPOS
 
 
         public Database.Product product;
+
         public ProductCard(Database.Product p)
         {
             InitializeComponent();
