@@ -105,5 +105,11 @@ namespace VendorPOS
         {
             
         }
+
+        private void btn_History_Click(object sender, EventArgs e)
+        {
+            Pages.HistoryPage myHistoryPage = new Pages.HistoryPage();
+            ChangeContainer(myHistoryPage);
+        }
     }
 }

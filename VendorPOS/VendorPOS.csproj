@@ -130,6 +130,12 @@
     <Compile Include="Pages\CategoryPage.Designer.cs">
       <DependentUpon>CategoryPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HistoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\HistoryPage.Designer.cs">
+      <DependentUpon>HistoryPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InvoicePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\CategoryPage.resx">
       <DependentUpon>CategoryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\HistoryPage.resx">
+      <DependentUpon>HistoryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\InvoicePage.resx">
       <DependentUpon>InvoicePage.cs</DependentUpon>

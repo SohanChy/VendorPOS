@@ -141,6 +141,7 @@ namespace VendorPOS.Pages
             invoice.customer_name =customerNameBox.Text;
             invoice.customer_phone = phoneNoBox.Text;
             invoice.date = datePicker.Value;
+            invoice.total = decimal.Parse(total.ToString());
   
             DB.Invoices.InsertOnSubmit(invoice);
             DB.SubmitChanges();
