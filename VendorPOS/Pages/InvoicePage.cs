@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.IO;
 using PdfSharp;
 using PdfSharp.Drawing;
@@ -18,10 +17,10 @@ namespace VendorPOS.Pages
 {
     public partial class InvoicePage : UserControl
     {
-
         private List<Database.Product> invoiceList = new List<Database.Product>();
         private Double total = 0.00;
         private int totalQuantity = 0;
+        private List<Database.Product> DistinctItems;
 
         public InvoicePage()
         {
@@ -90,7 +89,7 @@ namespace VendorPOS.Pages
                 object[] rows = new object[this.invoiceList.Count()+1];
                 int index = 0;
                 List<Database.Product> tempList = this.invoiceList;
-                List<Database.Product> DistinctItems = tempList.GroupBy(test => test.Id)
+                this.DistinctItems = tempList.GroupBy(test => test.Id)
                                                        .Select(grp => grp.First())
                                                        .ToList();
                 
@@ -131,22 +130,71 @@ namespace VendorPOS.Pages
             // Create a new PDF document
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Invoice";
- 
             // Create an empty page
             PdfPage page = document.AddPage();
- 
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
             // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.Regular);
- 
+            XFont font = new XFont("Verdana", 15, XFontStyle.Regular);
+            XFont headFont = new XFont("Verdana", 15, XFontStyle.Bold);
+            
             // Draw the text
-            gfx.DrawString("Hello, World!", font, XBrushes.Black,
-            new XRect(0, 0, page.Width, page.Height),
-            XStringFormats.Center);
- 
-            // Save the document...
-            const string filename = "HelloWorld.pdf";
+            gfx.DrawString("VendorPOS Invoice",font,XBrushes.Black,new XRect(0, 0, page.Width, page.Height),
+            XStringFormats.TopCenter);
+
+            int heightScale = 100;
+            int widthScale = 100;
+
+
+
+
+            if(dataGridView1.Rows.Count > 1){
+
+                gfx.DrawString("Product Name", headFont, XBrushes.Black,
+                      new XRect(0, 50, page.Width, page.Height),
+                      XStringFormats.TopLeft);
+
+                gfx.DrawString("Description", headFont, XBrushes.Black,
+                      new XRect(200, 50, page.Width, page.Height),
+                      XStringFormats.TopLeft);
+
+                gfx.DrawString("Price", headFont, XBrushes.Black,
+                      new XRect(400, 50, page.Width, page.Height),
+                      XStringFormats.TopLeft);
+
+                gfx.DrawString("Quantity", headFont, XBrushes.Black,
+                      new XRect(500, 50, page.Width, page.Height),
+                      XStringFormats.TopLeft);
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    var productName = row.Cells[0].Value ?? string.Empty;
+                    var productDescription = row.Cells[1].Value ?? string.Empty;
+                    var productPrice = row.Cells[2].Value ?? string.Empty;
+                    var productQuantity = row.Cells[3].Value ?? string.Empty;
+
+                    gfx.DrawString(productName.ToString(), font, XBrushes.Black,
+                        new XRect(0, 0 + heightScale, page.Width, page.Height),
+                        XStringFormats.TopLeft);
+
+                    gfx.DrawString(productDescription.ToString(), font, XBrushes.Black,
+                        new XRect(200, 0 + heightScale, page.Width, page.Height),
+                        XStringFormats.TopLeft);
+
+                    gfx.DrawString(productPrice.ToString(), font, XBrushes.Black,
+                        new XRect(400, 0 + heightScale, page.Width, page.Height),
+                        XStringFormats.TopLeft);
+
+                    gfx.DrawString(productQuantity.ToString(), font, XBrushes.Black,
+                        new XRect(500, 0 + heightScale, page.Width, page.Height),
+                        XStringFormats.TopLeft);
+
+                    heightScale += 50;
+                }
+            }
+
+            // Save the document
+            const string filename = "invoice.pdf";
             document.Save(filename);
         }
     }
