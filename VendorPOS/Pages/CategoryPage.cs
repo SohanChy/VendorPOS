@@ -12,7 +12,7 @@ namespace VendorPOS.Pages
 {
     public partial class CategoryPage : UserControl
     {
-        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext(Program.DB_CONN_STRING);
+        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
         private System.Data.Linq.Table<Database.Category> categoryList;
         private IEnumerable<Database.Category> cquery;
 

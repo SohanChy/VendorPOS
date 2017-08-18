@@ -39,13 +39,17 @@
             this.bunifuCustomTextbox2 = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_New = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.fileDBDataSet1 = new VendorPOS.Database.FileDBDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.fileDBDataSet1 = new VendorPOS.Database.FileDBDataSet();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.generateInvoiceBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileDBDataSet1)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -54,11 +58,14 @@
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel1.Controls.Add(this.dataGridView1);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel3);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(988, 484);
             this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // tableLayoutPanel1
             // 
@@ -188,19 +195,73 @@
             this.btn_New.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_New.Click += new System.EventHandler(this.btn_New_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.HotTrack;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 212);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(777, 197);
+            this.dataGridView1.TabIndex = 11;
+            // 
             // fileDBDataSet1
             // 
             this.fileDBDataSet1.DataSetName = "FileDBDataSet";
             this.fileDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dataGridView1
+            // flowLayoutPanel3
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 212);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(777, 272);
-            this.dataGridView1.TabIndex = 11;
+            this.flowLayoutPanel3.Controls.Add(this.generateInvoiceBtn);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 415);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(982, 66);
+            this.flowLayoutPanel3.TabIndex = 12;
+            // 
+            // generateInvoiceBtn
+            // 
+            this.generateInvoiceBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.generateInvoiceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.generateInvoiceBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.generateInvoiceBtn.BorderRadius = 0;
+            this.generateInvoiceBtn.ButtonText = "    Generate Invoice";
+            this.generateInvoiceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.generateInvoiceBtn.DisabledColor = System.Drawing.Color.Gray;
+            this.generateInvoiceBtn.Iconcolor = System.Drawing.Color.Transparent;
+            this.generateInvoiceBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("generateInvoiceBtn.Iconimage")));
+            this.generateInvoiceBtn.Iconimage_right = null;
+            this.generateInvoiceBtn.Iconimage_right_Selected = null;
+            this.generateInvoiceBtn.Iconimage_Selected = null;
+            this.generateInvoiceBtn.IconMarginLeft = 0;
+            this.generateInvoiceBtn.IconMarginRight = 0;
+            this.generateInvoiceBtn.IconRightVisible = true;
+            this.generateInvoiceBtn.IconRightZoom = 0D;
+            this.generateInvoiceBtn.IconVisible = true;
+            this.generateInvoiceBtn.IconZoom = 90D;
+            this.generateInvoiceBtn.IsTab = false;
+            this.generateInvoiceBtn.Location = new System.Drawing.Point(3, 3);
+            this.generateInvoiceBtn.Name = "generateInvoiceBtn";
+            this.generateInvoiceBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.generateInvoiceBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.generateInvoiceBtn.OnHoverTextColor = System.Drawing.Color.White;
+            this.generateInvoiceBtn.selected = false;
+            this.generateInvoiceBtn.Size = new System.Drawing.Size(774, 52);
+            this.generateInvoiceBtn.TabIndex = 7;
+            this.generateInvoiceBtn.Text = "    Generate Invoice";
+            this.generateInvoiceBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.generateInvoiceBtn.Textcolor = System.Drawing.Color.White;
+            this.generateInvoiceBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateInvoiceBtn.Click += new System.EventHandler(this.generateInvoiceBtn_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 487);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // InvoicePage
             // 
@@ -213,8 +274,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fileDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileDBDataSet1)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +296,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton btn_New;
         private Database.FileDBDataSet fileDBDataSet1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private Bunifu.Framework.UI.BunifuFlatButton generateInvoiceBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
