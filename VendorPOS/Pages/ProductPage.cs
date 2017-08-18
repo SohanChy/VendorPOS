@@ -7,7 +7,7 @@ namespace VendorPOS.Pages
 {
     public partial class ProductPage : UserControl
     {
-        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
+        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext(Program.DB_CONN_STRING);
         private System.Data.Linq.Table<Database.Category>categoryList;
         private System.Data.Linq.Table<Database.Product>productList;
         private List<Database.Product> invoiceList = new List<Database.Product>();
@@ -51,9 +51,32 @@ namespace VendorPOS.Pages
         }
 
 
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        private void addProductButton_Click(object sender, EventArgs e)
         {
+            ProductDialogShow(new CustomControls.ProductDialog(DB));
 
+        }
+
+        public void editProductDialogShow(Database.Product p)
+        {
+            ProductDialogShow(new CustomControls.ProductDialog(p, DB));
+        }
+
+        public void ProductDialogShow(CustomControls.ProductDialog catDialog)
+        {
+            Form prompt = new Form()
+            {
+                Width = catDialog.Width + 50,
+                Height = catDialog.Height + 50,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+
+            prompt.Controls.Add(catDialog);
+            catDialog.Dock = DockStyle.Fill;
+            prompt.ShowDialog();
+
+            populateProducts();
         }
 
         private void searchBox_OnValueChanged(object sender, EventArgs e)
@@ -97,7 +120,7 @@ namespace VendorPOS.Pages
             productFlow.Controls.Clear();
             foreach (Database.Product p in pquery)
             {
-                VendorPOS.ProductCard productCard = new ProductCard(p);  //publisher
+                VendorPOS.ProductCard productCard = new ProductCard(p,this);  //publisher
                 productCard.InvoiceAdded += this.OnInvoiceAdded;
                 productFlow.Controls.Add(productCard);
             }

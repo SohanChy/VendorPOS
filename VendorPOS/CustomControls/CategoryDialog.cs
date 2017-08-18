@@ -49,20 +49,28 @@ namespace VendorPOS.CustomControls
             }
         }
 
-        //this is save button alternative
         public bool confirm() {
 
             if (nameBox.Text.Count() > 0)
             {
                 this.category.name = nameBox.Text;
 
-                string toFile = System.IO.Path.Combine(
-                Program.CAT_ICONS_DIR,
-                DateTime.Now.ToString("yyyyMMddHHmmss") + System.IO.Path.GetExtension(iconHolderBox.ImageLocation)
-                );
+                if (iconHolderBox.ImageLocation != category.icon)
+                {
+                    if (category.icon != null)
+                    {
+                        System.IO.File.Delete(category.icon);
+                    }
 
-                System.IO.File.Copy(iconHolderBox.ImageLocation, toFile, true);
-                this.category.icon = toFile;
+                    string toFile = System.IO.Path.Combine(
+                    Program.CAT_ICONS_DIR,
+                    DateTime.Now.ToString("yyyyMMddHHmmss") + System.IO.Path.GetExtension(iconHolderBox.ImageLocation)
+                    );
+
+                    System.IO.File.Copy(iconHolderBox.ImageLocation, toFile, true);
+                    this.category.icon = toFile;
+                }
+
 
                 if (this.newModel == true)
                 {
