@@ -143,10 +143,6 @@ namespace VendorPOS.Pages
             XStringFormats.TopCenter);
 
             int heightScale = 100;
-            int widthScale = 100;
-
-
-
 
             if(dataGridView1.Rows.Count > 1){
 
@@ -194,8 +190,23 @@ namespace VendorPOS.Pages
             }
 
             // Save the document
-            const string filename = "invoice.pdf";
-            document.Save(filename);
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+
+            saveFileDialog.Filter = "PDF File (*.pdf)|*.pdf";
+            saveFileDialog.DefaultExt = ".pdf";
+            saveFileDialog.FileName = "Invoice";
+            saveFileDialog.FilterIndex = 2;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                string filename = saveFileDialog.FileName;
+                document.Save(filename);
+            }
+            
         }
     }
 }

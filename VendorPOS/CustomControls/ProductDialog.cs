@@ -161,6 +161,7 @@ namespace VendorPOS.CustomControls
         private void deleteButton_Click(object sender, EventArgs e)
         {
 
+            DB.Invoice_Products.DeleteAllOnSubmit(product.Invoice_Products);
             DB.Products.DeleteOnSubmit(product);
             DB.SubmitChanges();
 
