@@ -395,6 +395,7 @@
             this.containerPane.Name = "containerPane";
             this.containerPane.Size = new System.Drawing.Size(847, 474);
             this.containerPane.TabIndex = 105;
+            this.containerPane.Paint += new System.Windows.Forms.PaintEventHandler(this.containerPane_Paint);
             // 
             // doubleBitmapControl1
             // 

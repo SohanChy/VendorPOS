@@ -17,7 +17,6 @@ namespace VendorPOS.CustomControls
         
         private bool newModel = true;
 
-
         public ProductDialog(Database.Product product, Database.DataModelsDataContext DB)
         {
             InitializeComponent();
@@ -57,7 +56,7 @@ namespace VendorPOS.CustomControls
 
             if (nameBox.Text.Count() > 0)
             {
-                this.product.name = nameBox.Text;
+                 this.product.name = nameBox.Text;
                  product.name = this.nameBox.Text;
                  product.price = decimal.Parse(this.priceBox.Text);
                  product.image = this.iconHolderBox.ImageLocation;
@@ -96,7 +95,16 @@ namespace VendorPOS.CustomControls
 
                 if (this.newModel == true)
                 {
-                    DB.Products.InsertOnSubmit(product);
+                    if (categoryDropDown.selectedIndex != -1)
+                    {
+                        DB.Products.InsertOnSubmit(product);
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Please Select A Cateogory", "Problem saving item", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
 
                 DB.SubmitChanges();
@@ -160,12 +168,19 @@ namespace VendorPOS.CustomControls
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-
-            DB.Invoice_Products.DeleteAllOnSubmit(product.Invoice_Products);
-            DB.Products.DeleteOnSubmit(product);
+            if (product.Invoice_Products.Count() > 0)
+            {
+                product.archived = true;
+                deleteButton.Text = "Archived... Not Deleted";
+            }
+            else
+            {
+                DB.Products.DeleteOnSubmit(product);
+                this.FindForm().Close();
+            }
             DB.SubmitChanges();
 
-            this.FindForm().Close();
+            
             
         }
 
