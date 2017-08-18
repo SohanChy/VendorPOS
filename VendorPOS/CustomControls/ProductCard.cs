@@ -11,11 +11,9 @@ namespace VendorPOS
     {
 
         public event EventHandler<CustomEventArgs> RaiseCustomEvent;
-        //private event InvoiceAddEvent InvoiceAdded;
-
+        //private event InvoiceAddEvent InvoiceAdded
         //new delegate 
         public delegate void AddToInvoiceEventHandler(Database.Product source,EventArgs args);
-
         public event AddToInvoiceEventHandler InvoiceAdded;
 
         protected virtual void OnInvoiceAdded() {
@@ -39,7 +37,6 @@ namespace VendorPOS
 
 
         public Database.Product product;
-
         public ProductCard(Database.Product p)
         {
             InitializeComponent();
@@ -79,13 +76,10 @@ namespace VendorPOS
             OnInvoiceAdded();
         }
 
-
         private void handleInvoiceAdded() {
 
             name.Text = "Hello";
-        
         }
-
 
          protected virtual void OnRaiseCustomEvent(CustomEventArgs e)
         {
