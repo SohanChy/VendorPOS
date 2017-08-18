@@ -72,6 +72,12 @@
     <Compile Include="CustomControls\CategoryDialog.Designer.cs">
       <DependentUpon>CategoryDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\ProductDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ProductDialog.Designer.cs">
+      <DependentUpon>ProductDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\DataModels.cs">
       <DependentUpon>DataModels.dbml</DependentUpon>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\ProductCard.resx">
       <DependentUpon>ProductCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\ProductDialog.resx">
+      <DependentUpon>ProductDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

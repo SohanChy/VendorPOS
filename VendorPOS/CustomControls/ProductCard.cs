@@ -9,6 +9,8 @@ namespace VendorPOS
 
     public partial class ProductCard : UserControl
     {
+        public Database.Product product;
+        Pages.ProductPage myProPage;
 
         public event EventHandler<CustomEventArgs> RaiseCustomEvent;
         //private event InvoiceAddEvent InvoiceAdded
@@ -30,18 +32,12 @@ namespace VendorPOS
             // before you execute a block of code.
             //OnRaiseCustomEvent(new CustomEventArgs("Did something"));
         }
-        public ProductCard()
-        {
-            InitializeComponent();
-        }
 
-
-        public Database.Product product;
-
-        public ProductCard(Database.Product p)
+        public ProductCard(Database.Product p, Pages.ProductPage myProPage)
         {
             InitializeComponent();
             product = p;
+            this.myProPage = myProPage;
         }
 
         private void ProductCard_Load(object sender, EventArgs e)
@@ -99,6 +95,12 @@ namespace VendorPOS
                 handler(this, e);
             }
         }
+
+         private void EditButton_Click(object sender, EventArgs e)
+         {
+             myProPage.editProductDialogShow(product);
+
+         }
     }
 
 

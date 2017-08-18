@@ -105,7 +105,7 @@
             this.addButoon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addButoon.Textcolor = System.Drawing.Color.White;
             this.addButoon.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButoon.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
+            this.addButoon.Click += new System.EventHandler(this.addProductButton_Click);
             // 
             // categoryDropdown
             // 

@@ -43,6 +43,7 @@
             this.pictureBox.Location = new System.Drawing.Point(3, 12);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(173, 176);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
@@ -71,7 +72,7 @@
             this.ActionButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.ActionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ActionButton.BorderRadius = 0;
-            this.ActionButton.ButtonText = "Action";
+            this.ActionButton.ButtonText = "Edit";
             this.ActionButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ActionButton.DisabledColor = System.Drawing.Color.Gray;
             this.ActionButton.Iconcolor = System.Drawing.Color.Transparent;
@@ -94,11 +95,11 @@
             this.ActionButton.selected = false;
             this.ActionButton.Size = new System.Drawing.Size(92, 32);
             this.ActionButton.TabIndex = 3;
-            this.ActionButton.Text = "Action";
+            this.ActionButton.Text = "Edit";
             this.ActionButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ActionButton.Textcolor = System.Drawing.Color.White;
             this.ActionButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.ActionButton.Click += new System.EventHandler(this.ActionButton_Click);
+            this.ActionButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // price
             // 

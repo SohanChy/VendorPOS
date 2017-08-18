@@ -7,11 +7,6 @@ namespace VendorPOS
         public Database.Category category;
         public Pages.CategoryPage myCatPage;
 
-        public CategoryCard()
-        {
-            InitializeComponent();
-        }
-
         public CategoryCard(Database.Category c, Pages.CategoryPage catPage)
         {
             InitializeComponent();
