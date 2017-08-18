@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
 
 namespace VendorPOS
 {
@@ -20,8 +22,6 @@ namespace VendorPOS
 
         }
 
-
-
         private void ChangeContainer(UserControl u)
         {
             containerPane.Controls.Clear();
@@ -34,10 +34,11 @@ namespace VendorPOS
 
         }
 
-
         private void btn_Products_Click(object sender, EventArgs e)
         {
-            ChangeContainer(new Pages.ProductPage());
+            Pages.ProductPage myProductPage = new Pages.ProductPage();
+            myProductPage.viewInvoiceEvent += this.OnViewInvoice;
+            ChangeContainer(myProductPage);
         }
 
         private void btn_Category_Click(object sender, EventArgs e)
@@ -62,7 +63,8 @@ namespace VendorPOS
 
         private void btn_New_Click(object sender, EventArgs e)
         {
-            ChangeContainer(new Pages.InvoicePage());
+            Pages.InvoicePage myInvoicePage = new Pages.InvoicePage();
+            ChangeContainer(myInvoicePage);
 
         }
 
@@ -75,7 +77,7 @@ namespace VendorPOS
         {
 
         }
-
+        
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -84,6 +86,13 @@ namespace VendorPOS
         private void label_ApplicationName_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //event handler
+        public void OnViewInvoice(List<Database.Product> invoiceList, EventArgs args)
+        {
+            Pages.InvoicePage myInvoicePage = new Pages.InvoicePage(invoiceList);
+            ChangeContainer(myInvoicePage);
         }
     }
 }

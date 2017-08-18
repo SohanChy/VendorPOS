@@ -32,10 +32,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.addButoon = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.categoryDropdown = new Bunifu.Framework.UI.BunifuDropdown();
             this.searchBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.invoiceText = new System.Windows.Forms.Label();
+            this.invoiceCount = new System.Windows.Forms.Label();
             this.productFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.viewInvoiceBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,9 +61,11 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.addButoon);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.categoryDropdown);
             this.flowLayoutPanel1.Controls.Add(this.searchBox);
+            this.flowLayoutPanel1.Controls.Add(this.invoiceText);
+            this.flowLayoutPanel1.Controls.Add(this.invoiceCount);
+            this.flowLayoutPanel1.Controls.Add(this.viewInvoiceBtn);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -103,13 +107,6 @@
             this.addButoon.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButoon.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(130, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(97, 48);
-            this.panel1.TabIndex = 4;
-            // 
             // categoryDropdown
             // 
             this.categoryDropdown.BackColor = System.Drawing.Color.Transparent;
@@ -117,12 +114,12 @@
             this.categoryDropdown.Dock = System.Windows.Forms.DockStyle.Left;
             this.categoryDropdown.ForeColor = System.Drawing.Color.White;
             this.categoryDropdown.Items = new string[0];
-            this.categoryDropdown.Location = new System.Drawing.Point(233, 3);
+            this.categoryDropdown.Location = new System.Drawing.Point(130, 3);
             this.categoryDropdown.Name = "categoryDropdown";
             this.categoryDropdown.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.categoryDropdown.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.categoryDropdown.selectedIndex = -1;
-            this.categoryDropdown.Size = new System.Drawing.Size(131, 48);
+            this.categoryDropdown.Size = new System.Drawing.Size(110, 48);
             this.categoryDropdown.TabIndex = 2;
             this.categoryDropdown.onItemSelected += new System.EventHandler(this.categoryDropdown_onItemSelected);
             // 
@@ -138,13 +135,33 @@
             this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.searchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.searchBox.isPassword = false;
-            this.searchBox.Location = new System.Drawing.Point(371, 4);
+            this.searchBox.Location = new System.Drawing.Point(247, 4);
             this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(318, 46);
+            this.searchBox.Size = new System.Drawing.Size(259, 46);
             this.searchBox.TabIndex = 3;
             this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.searchBox.OnValueChanged += new System.EventHandler(this.searchBox_OnValueChanged);
+            // 
+            // invoiceText
+            // 
+            this.invoiceText.AutoSize = true;
+            this.invoiceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoiceText.Location = new System.Drawing.Point(513, 0);
+            this.invoiceText.Name = "invoiceText";
+            this.invoiceText.Size = new System.Drawing.Size(13, 13);
+            this.invoiceText.TabIndex = 5;
+            this.invoiceText.Text = "  ";
+            this.invoiceText.Click += new System.EventHandler(this.invoiceCount_Click);
+            // 
+            // invoiceCount
+            // 
+            this.invoiceCount.AutoSize = true;
+            this.invoiceCount.Location = new System.Drawing.Point(532, 0);
+            this.invoiceCount.Name = "invoiceCount";
+            this.invoiceCount.Size = new System.Drawing.Size(13, 13);
+            this.invoiceCount.TabIndex = 0;
+            this.invoiceCount.Text = "  ";
             // 
             // productFlow
             // 
@@ -154,15 +171,51 @@
             this.productFlow.Size = new System.Drawing.Size(894, 397);
             this.productFlow.TabIndex = 1;
             // 
-            // ProductControl
+            // viewInvoiceBtn
+            // 
+            this.viewInvoiceBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.viewInvoiceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.viewInvoiceBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.viewInvoiceBtn.BorderRadius = 0;
+            this.viewInvoiceBtn.ButtonText = "Show Invoice";
+            this.viewInvoiceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.viewInvoiceBtn.DisabledColor = System.Drawing.Color.Gray;
+            this.viewInvoiceBtn.Iconcolor = System.Drawing.Color.Transparent;
+            this.viewInvoiceBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("viewInvoiceBtn.Iconimage")));
+            this.viewInvoiceBtn.Iconimage_right = null;
+            this.viewInvoiceBtn.Iconimage_right_Selected = null;
+            this.viewInvoiceBtn.Iconimage_Selected = null;
+            this.viewInvoiceBtn.IconMarginLeft = 0;
+            this.viewInvoiceBtn.IconMarginRight = 0;
+            this.viewInvoiceBtn.IconRightVisible = true;
+            this.viewInvoiceBtn.IconRightZoom = 0D;
+            this.viewInvoiceBtn.IconVisible = true;
+            this.viewInvoiceBtn.IconZoom = 90D;
+            this.viewInvoiceBtn.IsTab = false;
+            this.viewInvoiceBtn.Location = new System.Drawing.Point(551, 3);
+            this.viewInvoiceBtn.Name = "viewInvoiceBtn";
+            this.viewInvoiceBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.viewInvoiceBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.viewInvoiceBtn.OnHoverTextColor = System.Drawing.Color.White;
+            this.viewInvoiceBtn.selected = false;
+            this.viewInvoiceBtn.Size = new System.Drawing.Size(121, 48);
+            this.viewInvoiceBtn.TabIndex = 6;
+            this.viewInvoiceBtn.Text = "Show Invoice";
+            this.viewInvoiceBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.viewInvoiceBtn.Textcolor = System.Drawing.Color.White;
+            this.viewInvoiceBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewInvoiceBtn.Click += new System.EventHandler(this.viewInvoiceBtn_Click);
+            // 
+            // ProductPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ProductControl";
+            this.Name = "ProductPage";
             this.Size = new System.Drawing.Size(900, 460);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -175,7 +228,9 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox searchBox;
         private Bunifu.Framework.UI.BunifuDropdown categoryDropdown;
         private System.Windows.Forms.FlowLayoutPanel productFlow;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label invoiceText;
+        private System.Windows.Forms.Label invoiceCount;
+        private Bunifu.Framework.UI.BunifuFlatButton viewInvoiceBtn;
 
     }
 }

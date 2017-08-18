@@ -8,11 +8,25 @@ namespace VendorPOS.Pages
     public partial class ProductPage : UserControl
     {
         private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
-        private System.Data.Linq.Table<Database.Category> categoryList;
-        private System.Data.Linq.Table<Database.Product>  productList;
-
+        private System.Data.Linq.Table<Database.Category>categoryList;
+        private System.Data.Linq.Table<Database.Product>productList;
+        private List<Database.Product> invoiceList = new List<Database.Product>();
+        
         private IEnumerable<Database.Product> pquery;
+
         private int selectedCatId;
+        //delegates
+        public delegate void ViewInvoiceEventHandler(List<Database.Product>invoiceList, EventArgs args);
+        public event ViewInvoiceEventHandler viewInvoiceEvent;
+
+        protected virtual void OnViewInvoice()
+        {
+            if (viewInvoiceEvent != null)
+            {
+                viewInvoiceEvent(this.invoiceList, EventArgs.Empty);
+            }
+        }
+
         public ProductPage()
         {
             InitializeComponent();
@@ -21,8 +35,8 @@ namespace VendorPOS.Pages
 
         private void loadData()
         {
+            viewInvoiceBtn.Hide();
             categoryList = DB.Categories;
-
             foreach (var item in categoryList)
             {
                 categoryDropdown.AddItem(item.name);
@@ -34,7 +48,6 @@ namespace VendorPOS.Pages
                      orderby p.created_at
                      select p).Take(10);
             populateProducts();
-            
         }
 
 
@@ -73,18 +86,44 @@ namespace VendorPOS.Pages
                      where p.category_id == selectedCatId
                      select p;
 
+            pquery = from p in productList 
+                     where p.category_id == selectedCatId
+                     select p;
             populateProducts();
-            
         }
 
         private void populateProducts()
         {
             productFlow.Controls.Clear();
-
             foreach (Database.Product p in pquery)
             {
-                productFlow.Controls.Add(new ProductCard(p));
+                VendorPOS.ProductCard productCard = new ProductCard(p);  //publisher
+                productCard.InvoiceAdded += this.OnInvoiceAdded;
+                productFlow.Controls.Add(productCard);
             }
+        }
+
+        //event handler 
+        public void OnInvoiceAdded(Database.Product source, EventArgs e)
+        {
+            this.invoiceList.Add(source);
+            invoiceText.Text = "Products Added To Invoice";
+            invoiceCount.Text = this.invoiceList.Count().ToString();
+
+            if (this.invoiceList.Count() > 0)
+            {
+                viewInvoiceBtn.Show();   
+            }
+        }
+
+        private void invoiceCount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            OnViewInvoice();
         }
     }
 }
