@@ -7,7 +7,7 @@ namespace VendorPOS.Pages
 {
     public partial class ProductPage : UserControl
     {
-        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext(Program.DB_CONN_STRING);
+        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
         private System.Data.Linq.Table<Database.Category>categoryList;
         private System.Data.Linq.Table<Database.Product>productList;
         private List<Database.Product> invoiceList = new List<Database.Product>();
