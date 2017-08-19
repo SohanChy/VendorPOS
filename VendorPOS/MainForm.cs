@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.IO;
 
 
 namespace VendorPOS
@@ -10,6 +11,11 @@ namespace VendorPOS
         public MainForm()
         {
             InitializeComponent();
+
+            if (!File.Exists(Program.DB_FILE_PATH))
+            {
+                new Database.DataModelsDataContext().CreateDatabase();
+            }
 
             Pages.ProductPage myProductPage = new Pages.ProductPage();
             myProductPage.viewInvoiceEvent += this.OnViewInvoice;

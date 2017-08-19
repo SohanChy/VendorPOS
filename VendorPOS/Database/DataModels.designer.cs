@@ -45,7 +45,8 @@ namespace VendorPOS.Database
     #endregion
 		
 		public DataModelsDataContext() : 
-				base(global::VendorPOS.Properties.Settings.Default.FileDBConnectionString, mappingSource)
+				//base(global::VendorPOS.Properties.Settings.Default.FileDBConnectionString, mappingSource)
+                base(Program.DB_CONN_STRING, mappingSource)
 		{
 			OnCreated();
 		}
@@ -269,6 +270,8 @@ namespace VendorPOS.Database
 		
 		private decimal _price;
 		
+		private bool _archived;
+		
 		private EntitySet<Invoice_Product> _Invoice_Products;
 		
 		private EntityRef<Category> _Category;
@@ -295,6 +298,8 @@ namespace VendorPOS.Database
     partial void OndescriptionChanged();
     partial void OnpriceChanging(decimal value);
     partial void OnpriceChanged();
+    partial void OnarchivedChanging(bool value);
+    partial void OnarchivedChanged();
     #endregion
 		
 		public Product()
@@ -484,6 +489,26 @@ namespace VendorPOS.Database
 					this._price = value;
 					this.SendPropertyChanged("price");
 					this.OnpriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_archived", DbType="int")]
+		public bool archived
+		{
+			get
+			{
+				return this._archived;
+			}
+			set
+			{
+				if ((this._archived != value))
+				{
+					this.OnarchivedChanging(value);
+					this.SendPropertyChanging();
+					this._archived = value;
+					this.SendPropertyChanged("archived");
+					this.OnarchivedChanged();
 				}
 			}
 		}

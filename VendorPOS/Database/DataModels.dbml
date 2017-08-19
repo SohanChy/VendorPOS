@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FileDB" Class="DataModelsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Database\FileDB.mdf;Integrated Security=True" SettingsObjectName="VendorPOS.Properties.Settings" SettingsPropertyName="FileDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\FileDB.mdf;Integrated Security=True" SettingsObjectName="VendorPOS.Properties.Settings" SettingsPropertyName="FileDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Categories" Member="Categories">
     <Type Name="Category">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -19,6 +19,7 @@
       <Column Name="expiry_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="archived" Type="System.Boolean" DbType="int" CanBeNull="false" UpdateCheck="Always" />
       <Association Name="Product_Invoice_Product" Member="Invoice_Products" ThisKey="Id" OtherKey="product_id" Type="Invoice_Product" />
       <Association Name="Category_Product" Member="Category" ThisKey="category_id" OtherKey="Id" Type="Category" IsForeignKey="true" />
     </Type>
