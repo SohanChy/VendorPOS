@@ -30,13 +30,16 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.monthPicker = new Bunifu.Framework.UI.BunifuDropdown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.YearPicker = new Bunifu.Framework.UI.BunifuDropdown();
             this.InvoiceFLow = new System.Windows.Forms.FlowLayoutPanel();
             this.historyGridView = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.InvoiceFLow.SuspendLayout();
@@ -62,11 +65,64 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.monthPicker);
+            this.flowLayoutPanel1.Controls.Add(this.label2);
+            this.flowLayoutPanel1.Controls.Add(this.YearPicker);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(894, 51);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 41);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Month";
+            // 
+            // monthPicker
+            // 
+            this.monthPicker.BackColor = System.Drawing.Color.Transparent;
+            this.monthPicker.BorderRadius = 3;
+            this.monthPicker.ForeColor = System.Drawing.Color.White;
+            this.monthPicker.Items = new string[0];
+            this.monthPicker.Location = new System.Drawing.Point(46, 3);
+            this.monthPicker.Name = "monthPicker";
+            this.monthPicker.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.monthPicker.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.monthPicker.selectedIndex = -1;
+            this.monthPicker.Size = new System.Drawing.Size(217, 35);
+            this.monthPicker.TabIndex = 0;
+            this.monthPicker.onItemSelected += new System.EventHandler(this.monthPicker_onItemSelected);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(269, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 41);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Year";
+            // 
+            // YearPicker
+            // 
+            this.YearPicker.BackColor = System.Drawing.Color.Transparent;
+            this.YearPicker.BorderRadius = 3;
+            this.YearPicker.ForeColor = System.Drawing.Color.White;
+            this.YearPicker.Items = new string[0];
+            this.YearPicker.Location = new System.Drawing.Point(304, 3);
+            this.YearPicker.Name = "YearPicker";
+            this.YearPicker.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.YearPicker.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.YearPicker.selectedIndex = -1;
+            this.YearPicker.Size = new System.Drawing.Size(217, 35);
+            this.YearPicker.TabIndex = 1;
+            this.YearPicker.onItemSelected += new System.EventHandler(this.YearPicker_onItemSelected);
             // 
             // InvoiceFLow
             // 
@@ -100,7 +156,6 @@
             this.historyGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.historyGridView.Size = new System.Drawing.Size(693, 316);
             this.historyGridView.TabIndex = 0;
-            this.historyGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowDoubleClick);
             this.historyGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowDoubleClick);
             this.historyGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowDoubleClick);
             // 
@@ -139,16 +194,6 @@
             this.total.ReadOnly = true;
             this.total.Width = 150;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // HistoryPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +221,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.Label label1;
+        private Bunifu.Framework.UI.BunifuDropdown monthPicker;
+        private System.Windows.Forms.Label label2;
+        private Bunifu.Framework.UI.BunifuDropdown YearPicker;
 
     }
 }

@@ -53,6 +53,15 @@ namespace VendorPOS
             ChangeContainer(myProductPage);
         }
 
+        //event handler
+        public void OnMoreProducts(List<Database.Product> invoiceList, EventArgs args)
+        {
+            Pages.ProductPage myProductPage = new Pages.ProductPage(invoiceList);
+            myProductPage.viewInvoiceEvent += this.OnViewInvoice;
+            ChangeContainer(myProductPage);
+        }
+
+
         private void btn_Category_Click(object sender, EventArgs e)
         {
             ChangeContainer(new Pages.CategoryPage());
@@ -100,10 +109,23 @@ namespace VendorPOS
 
         }
 
+
+
+
+
         //event handler
         public void OnViewInvoice(List<Database.Product> invoiceList, EventArgs args)
         {
             Pages.InvoicePage myInvoicePage = new Pages.InvoicePage(invoiceList);
+            myInvoicePage.moreProductsEvent += this.OnMoreProducts;
+            ChangeContainer(myInvoicePage);
+        }
+
+        //event handler
+        public void OnViewInvoice(List<Database.Product> invoiceList,Database.Invoice invoice, EventArgs args)
+        {
+            Pages.InvoicePage myInvoicePage = new Pages.InvoicePage(invoiceList, invoice);
+            myInvoicePage.moreProductsEvent += this.OnMoreProducts;
             ChangeContainer(myInvoicePage);
         }
 
@@ -115,7 +137,14 @@ namespace VendorPOS
         private void btn_History_Click(object sender, EventArgs e)
         {
             Pages.HistoryPage myHistoryPage = new Pages.HistoryPage();
+            myHistoryPage.viewInvoiceEvent += this.OnViewInvoice;
             ChangeContainer(myHistoryPage);
+        }
+
+        private void NewInvoiceButton_Click(object sender, EventArgs e)
+        {
+            Pages.InvoicePage myInvoicePage = new Pages.InvoicePage();
+            ChangeContainer(myInvoicePage);
         }
     }
 }

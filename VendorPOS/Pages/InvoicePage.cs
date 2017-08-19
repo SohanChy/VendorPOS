@@ -22,11 +22,14 @@ namespace VendorPOS.Pages
         private Double total = 0.00;
         private int totalQuantity = 0;
         private List<Database.Product> DistinctItems;
+        Database.Invoice invoice;
+        bool newModel = true;
 
         public InvoicePage()
         {
             InitializeComponent();
             this.loadListViewData();
+            invoice = new Database.Invoice();
         }
 
         public InvoicePage(List<Database.Product> invoiceList)
@@ -34,6 +37,23 @@ namespace VendorPOS.Pages
             InitializeComponent();
             this.invoiceList = invoiceList;
             this.loadListViewData();
+
+            invoice = new Database.Invoice();
+        }
+
+        public InvoicePage(List<Database.Product> invoiceList, Database.Invoice invoice)
+        {
+            InitializeComponent();
+            this.invoiceList = invoiceList;
+            this.loadListViewData();
+
+            this.invoice = invoice;
+            newModel = false;
+
+            customerNameBox.Text = invoice.customer_name;
+            phoneNoBox.Text = invoice.customer_phone;
+            remarksBox.Text = invoice.remarks;
+            datePicker.Value = invoice.date;
         }
 
         private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
@@ -136,14 +156,27 @@ namespace VendorPOS.Pages
 
         private void saveToDB()
         {
-
-            Database.Invoice invoice = new Database.Invoice();
             invoice.customer_name =customerNameBox.Text;
             invoice.customer_phone = phoneNoBox.Text;
             invoice.date = datePicker.Value;
             invoice.total = decimal.Parse(total.ToString());
-  
-            DB.Invoices.InsertOnSubmit(invoice);
+
+            if (newModel)
+            {
+                DB.Invoices.InsertOnSubmit(invoice);
+            }
+            else
+            {
+                
+                
+                foreach (var item in invoice.Invoice_Products.ToList())
+                {
+                    invoice.Invoice_Products.Remove(item);
+                }
+
+                
+            }
+
             DB.SubmitChanges();
             
             //Complex stuff done here for invoice products generation
@@ -283,6 +316,35 @@ namespace VendorPOS.Pages
             PdfDocument document = new PdfDocument();
             const string filename = "Hell.pdf";
             document.Save(filename);
+        }
+
+        private void clearItems_Click(object sender, EventArgs e)
+        {
+            this.invoiceList.Clear();
+            dataGridView1.Rows.Clear();
+        }
+
+        private void onlySaveButton_Click(object sender, EventArgs e)
+        {
+            saveToDB();
+        }
+
+
+        //delegates
+        public delegate void MoreProductsEventHandler(List<Database.Product> invoiceList, EventArgs args);
+        public event MoreProductsEventHandler moreProductsEvent;
+
+        protected virtual void OnMoreProducts()
+        {
+            if (moreProductsEvent != null)
+            {
+                moreProductsEvent(this.invoiceList, EventArgs.Empty);
+            }
+        }
+
+        private void moreProductsButton_Click(object sender, EventArgs e)
+        {
+            OnMoreProducts();
         }
     }
 

@@ -40,9 +40,8 @@
             this.btn_Products = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Category = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Invoices = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_New = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.NewInvoiceButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_History = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_Report = new Bunifu.Framework.UI.BunifuFlatButton();
             this.containerPane = new System.Windows.Forms.Panel();
             this.doubleBitmapControl1 = new BunifuAnimatorNS.DoubleBitmapControl();
             this.panel1.SuspendLayout();
@@ -126,9 +125,8 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Products);
             this.flowLayoutPanel1.Controls.Add(this.btn_Category);
             this.flowLayoutPanel1.Controls.Add(this.btn_Invoices);
-            this.flowLayoutPanel1.Controls.Add(this.btn_New);
+            this.flowLayoutPanel1.Controls.Add(this.NewInvoiceButton);
             this.flowLayoutPanel1.Controls.Add(this.btn_History);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Report);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 89);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -283,40 +281,40 @@
             this.btn_Invoices.Textcolor = System.Drawing.Color.White;
             this.btn_Invoices.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // btn_New
+            // NewInvoiceButton
             // 
-            this.btn_New.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_New.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_New.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_New.BorderRadius = 0;
-            this.btn_New.ButtonText = "     New";
-            this.btn_New.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_New.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_New.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_New.Iconimage = ((System.Drawing.Image)(resources.GetObject("btn_New.Iconimage")));
-            this.btn_New.Iconimage_right = null;
-            this.btn_New.Iconimage_right_Selected = null;
-            this.btn_New.Iconimage_Selected = null;
-            this.btn_New.IconMarginLeft = 0;
-            this.btn_New.IconMarginRight = 0;
-            this.btn_New.IconRightVisible = true;
-            this.btn_New.IconRightZoom = 0D;
-            this.btn_New.IconVisible = true;
-            this.btn_New.IconZoom = 90D;
-            this.btn_New.IsTab = false;
-            this.btn_New.Location = new System.Drawing.Point(3, 279);
-            this.btn_New.Name = "btn_New";
-            this.btn_New.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_New.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.btn_New.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_New.selected = false;
-            this.btn_New.Size = new System.Drawing.Size(193, 48);
-            this.btn_New.TabIndex = 5;
-            this.btn_New.Text = "     New";
-            this.btn_New.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_New.Textcolor = System.Drawing.Color.White;
-            this.btn_New.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_New.Click += new System.EventHandler(this.btn_New_Click);
+            this.NewInvoiceButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.NewInvoiceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.NewInvoiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NewInvoiceButton.BorderRadius = 0;
+            this.NewInvoiceButton.ButtonText = "     New Invoice";
+            this.NewInvoiceButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NewInvoiceButton.DisabledColor = System.Drawing.Color.Gray;
+            this.NewInvoiceButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.NewInvoiceButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("NewInvoiceButton.Iconimage")));
+            this.NewInvoiceButton.Iconimage_right = null;
+            this.NewInvoiceButton.Iconimage_right_Selected = null;
+            this.NewInvoiceButton.Iconimage_Selected = null;
+            this.NewInvoiceButton.IconMarginLeft = 0;
+            this.NewInvoiceButton.IconMarginRight = 0;
+            this.NewInvoiceButton.IconRightVisible = true;
+            this.NewInvoiceButton.IconRightZoom = 0D;
+            this.NewInvoiceButton.IconVisible = true;
+            this.NewInvoiceButton.IconZoom = 90D;
+            this.NewInvoiceButton.IsTab = false;
+            this.NewInvoiceButton.Location = new System.Drawing.Point(3, 279);
+            this.NewInvoiceButton.Name = "NewInvoiceButton";
+            this.NewInvoiceButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.NewInvoiceButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.NewInvoiceButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.NewInvoiceButton.selected = false;
+            this.NewInvoiceButton.Size = new System.Drawing.Size(193, 48);
+            this.NewInvoiceButton.TabIndex = 7;
+            this.NewInvoiceButton.Text = "     New Invoice";
+            this.NewInvoiceButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NewInvoiceButton.Textcolor = System.Drawing.Color.White;
+            this.NewInvoiceButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewInvoiceButton.Click += new System.EventHandler(this.NewInvoiceButton_Click);
             // 
             // btn_History
             // 
@@ -352,40 +350,6 @@
             this.btn_History.Textcolor = System.Drawing.Color.White;
             this.btn_History.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_History.Click += new System.EventHandler(this.btn_History_Click);
-            // 
-            // btn_Report
-            // 
-            this.btn_Report.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_Report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_Report.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Report.BorderRadius = 0;
-            this.btn_Report.ButtonText = "     Report";
-            this.btn_Report.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Report.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_Report.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Report.Iconimage = ((System.Drawing.Image)(resources.GetObject("btn_Report.Iconimage")));
-            this.btn_Report.Iconimage_right = null;
-            this.btn_Report.Iconimage_right_Selected = null;
-            this.btn_Report.Iconimage_Selected = null;
-            this.btn_Report.IconMarginLeft = 0;
-            this.btn_Report.IconMarginRight = 0;
-            this.btn_Report.IconRightVisible = true;
-            this.btn_Report.IconRightZoom = 0D;
-            this.btn_Report.IconVisible = true;
-            this.btn_Report.IconZoom = 90D;
-            this.btn_Report.IsTab = false;
-            this.btn_Report.Location = new System.Drawing.Point(3, 387);
-            this.btn_Report.Name = "btn_Report";
-            this.btn_Report.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_Report.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.btn_Report.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_Report.selected = false;
-            this.btn_Report.Size = new System.Drawing.Size(193, 48);
-            this.btn_Report.TabIndex = 7;
-            this.btn_Report.Text = "     Report";
-            this.btn_Report.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Report.Textcolor = System.Drawing.Color.White;
-            this.btn_Report.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // containerPane
             // 
@@ -439,9 +403,8 @@
         private System.Windows.Forms.Label label_ApplicationName;
         private System.Windows.Forms.Panel containerPane;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Invoices;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_New;
         private Bunifu.Framework.UI.BunifuFlatButton btn_History;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_Report;
+        private Bunifu.Framework.UI.BunifuFlatButton NewInvoiceButton;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private System.Windows.Forms.Panel panel2;
         private BunifuAnimatorNS.DoubleBitmapControl doubleBitmapControl1;

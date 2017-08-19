@@ -33,9 +33,19 @@ namespace VendorPOS.Pages
             loadData();
         }
 
+        public ProductPage(List<Database.Product> invoiceList)
+        {
+            InitializeComponent();
+            this.invoiceList = invoiceList;
+            loadData();
+        }
+
         private void loadData()
         {
-            viewInvoiceBtn.Hide();
+            if (invoiceList.Count <= 0)
+            {
+                viewInvoiceBtn.Hide();
+            }
             categoryList = DB.Categories;
             foreach (var item in categoryList)
             {
