@@ -17,6 +17,7 @@ namespace VendorPOS.Pages
 {
     public partial class InvoicePage : UserControl
     {
+        private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
         private List<Database.Product> invoiceList = new List<Database.Product>();
         private Double total = 0.00;
         private int totalQuantity = 0;
@@ -127,6 +128,51 @@ namespace VendorPOS.Pages
 
         private void generateInvoiceBtn_Click(object sender, EventArgs e)
         {
+            createPDF();
+
+            saveToDB();
+
+        }
+
+        private void saveToDB()
+        {
+
+            Database.Invoice invoice = new Database.Invoice();
+            invoice.customer_name =customerNameBox.Text;
+            invoice.customer_phone = phoneNoBox.Text;
+            invoice.date = datePicker.Value;
+            invoice.total = decimal.Parse(total.ToString());
+  
+            DB.Invoices.InsertOnSubmit(invoice);
+            DB.SubmitChanges();
+            
+            //Complex stuff done here for invoice products generation
+            List<Database.Product> tempList = this.invoiceList;
+            this.DistinctItems = tempList.GroupBy(test => test.Id)
+                                                       .Select(grp => grp.First())
+                                                       .ToList();
+
+            foreach (var item in DistinctItems)
+            {
+
+
+                var duplicates = this.invoiceList.Where(p => p.Id == item.Id);
+
+                var invoiceProduct = new Database.Invoice_Product();
+
+                invoiceProduct.invoice_id = invoice.Id;
+                invoiceProduct.product_id = item.Id;
+                invoiceProduct.quantity = duplicates.Count();
+
+                DB.Invoice_Products.InsertOnSubmit(invoiceProduct);
+
+            }
+
+            DB.SubmitChanges();
+        }
+
+        private void createPDF()
+        {
             // Create a new PDF document
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Invoice";
@@ -139,14 +185,14 @@ namespace VendorPOS.Pages
             XFont headFont = new XFont("Verdana", 10, XFontStyle.Bold);
             
             // Draw the text
-            gfx.DrawString("VendorPOS Invoice",font,XBrushes.Black,new XRect(0, 0, page.Width, page.Height),
+            gfx.DrawString("VendorPOS Invoice", font, XBrushes.Black, new XRect(0, 0, page.Width, page.Height),
             XStringFormats.TopCenter);
 
             int heightScale = 100;
             int widthScale = 100;
 
-            if(dataGridView1.Rows.Count > 1){
-
+            if (dataGridView1.Rows.Count > 1)
+            {
                 gfx.DrawString("Product Name", headFont, XBrushes.Black,
                       new XRect(0, 50, page.Width, page.Height),
                       XStringFormats.TopLeft);
@@ -197,8 +243,22 @@ namespace VendorPOS.Pages
             }
 
             // Save the document
-            const string filename = "invoice.pdf";
-            document.Save(filename);
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+
+            saveFileDialog.Filter = "PDF File (*.pdf)|*.pdf";
+            saveFileDialog.DefaultExt = ".pdf";
+            saveFileDialog.FileName = "Invoice";
+            saveFileDialog.FilterIndex = 2;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                string filename = saveFileDialog.FileName;
+                document.Save(filename);
+            }
         }
 
 

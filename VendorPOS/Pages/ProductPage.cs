@@ -8,8 +8,8 @@ namespace VendorPOS.Pages
     public partial class ProductPage : UserControl
     {
         private Database.DataModelsDataContext DB = new Database.DataModelsDataContext();
-        private System.Data.Linq.Table<Database.Category>categoryList;
-        private System.Data.Linq.Table<Database.Product>productList;
+        private System.Data.Linq.Table<Database.Category> categoryList;
+        private System.Data.Linq.Table<Database.Product> productList;
         private List<Database.Product> invoiceList = new List<Database.Product>();
         
         private IEnumerable<Database.Product> pquery;
@@ -45,8 +45,9 @@ namespace VendorPOS.Pages
             productList = DB.Products;
 
             pquery = (from p in productList
-                     orderby p.created_at
-                     select p).Take(10);
+                      where p.archived == false
+                      orderby p.created_at
+                      select p).Take(10);
             populateProducts();
         }
 
@@ -85,6 +86,7 @@ namespace VendorPOS.Pages
             if (selectedCatId != 0)
             {
                 pquery = from p in productList
+                         where p.archived == false
                          where p.name.Contains(searchBox.Text)
                          && p.category_id == selectedCatId
                          select p;
@@ -92,6 +94,7 @@ namespace VendorPOS.Pages
             else
             {
                 pquery = from p in productList
+                         where p.archived == false
                          where p.name.Contains(searchBox.Text)
                          select p;
             }
@@ -106,10 +109,12 @@ namespace VendorPOS.Pages
             selectedCatId = cquery.First();
 
             pquery = from p in productList
+                     where p.archived == false
                      where p.category_id == selectedCatId
                      select p;
 
-            pquery = from p in productList 
+            pquery = from p in productList
+                     where p.archived == false
                      where p.category_id == selectedCatId
                      select p;
             populateProducts();

@@ -351,6 +351,7 @@
             this.btn_History.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_History.Textcolor = System.Drawing.Color.White;
             this.btn_History.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_History.Click += new System.EventHandler(this.btn_History_Click);
             // 
             // btn_Report
             // 
@@ -395,6 +396,7 @@
             this.containerPane.Name = "containerPane";
             this.containerPane.Size = new System.Drawing.Size(847, 474);
             this.containerPane.TabIndex = 105;
+            this.containerPane.Paint += new System.Windows.Forms.PaintEventHandler(this.containerPane_Paint);
             // 
             // doubleBitmapControl1
             // 

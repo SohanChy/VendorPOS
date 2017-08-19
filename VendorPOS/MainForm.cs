@@ -10,6 +10,12 @@ namespace VendorPOS
         public MainForm()
         {
             InitializeComponent();
+
+            Pages.ProductPage myProductPage = new Pages.ProductPage();
+            myProductPage.viewInvoiceEvent += this.OnViewInvoice;
+            
+            ChangeContainer(myProductPage);
+
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -93,6 +99,17 @@ namespace VendorPOS
         {
             Pages.InvoicePage myInvoicePage = new Pages.InvoicePage(invoiceList);
             ChangeContainer(myInvoicePage);
+        }
+
+        private void containerPane_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void btn_History_Click(object sender, EventArgs e)
+        {
+            Pages.HistoryPage myHistoryPage = new Pages.HistoryPage();
+            ChangeContainer(myHistoryPage);
         }
     }
 }

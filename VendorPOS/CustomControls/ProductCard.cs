@@ -43,7 +43,9 @@ namespace VendorPOS
         private void ProductCard_Load(object sender, EventArgs e)
         {
             name.Text = product.name;
-            desc.Text = product.description;
+
+            desc.Text = product.archived.ToString() ;
+            //desc.Text = product.description;
             price.Text = "BDT " + product.price.ToString();
             pictureBox.ImageLocation = product.image;
         }
