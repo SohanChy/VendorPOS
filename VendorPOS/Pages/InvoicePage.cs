@@ -96,7 +96,6 @@ namespace VendorPOS.Pages
                 foreach (var item in DistinctItems)
                 {
                     var duplicates = this.invoiceList.Where(p => p.Id == item.Id);
-
                     string[] row = new string[] { item.name, item.description,duplicates.Count().ToString(), item.price.ToString() };
                     rows[index] = row;
                     index++;
@@ -201,5 +200,30 @@ namespace VendorPOS.Pages
             const string filename = "invoice.pdf";
             document.Save(filename);
         }
+
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int totalQuantity = 0;
+            int index = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                /*
+                if (index >= dataGridView1.Rows.Count-2)
+                {
+                    break;
+                }
+                totalQuantity += Int32.Parse(row.Cells[2].Value.ToString());
+                index++;
+                 */
+                
+            }
+            dataGridView1.Rows[3].Cells[2].Value = "Hello World";
+            // Save the document
+            PdfDocument document = new PdfDocument();
+            const string filename = "Hell.pdf";
+            document.Save(filename);
+        }
     }
+
 }
