@@ -3,7 +3,7 @@
   <Class Name="VendorPOS.Pages.InvoicePage">
     <Position X="1.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAhAQBQBACCACAAAAQCAAAkCAIgLQAAQAEgkAAAAACA=</HashCode>
+      <HashCode>AAgAABQBASIACAAAAQCCAAECCIgKQACQQEgkAAQAADA=</HashCode>
       <FileName>Pages\InvoicePage.cs</FileName>
     </TypeIdentifier>
   </Class>

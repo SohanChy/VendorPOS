@@ -182,10 +182,14 @@ namespace VendorPOS.Pages
             XGraphics gfx = XGraphics.FromPdfPage(page);
             // Create a font
             XFont font = new XFont("Verdana", 10, XFontStyle.Regular);
-            XFont headFont = new XFont("Verdana", 10, XFontStyle.Bold);
+            XFont headFont = new XFont("Verdana", 15, XFontStyle.Bold);
+
+            //logo
+            XImage image = XImage.FromFile("./logo.png");
+            gfx.DrawImage(image, 0, 0, 150, 100);
             
             // Draw the text
-            gfx.DrawString("VendorPOS Invoice", font, XBrushes.Black, new XRect(0, 0, page.Width, page.Height),
+            gfx.DrawString("VendorPOS Invoice", headFont, XBrushes.Black, new XRect(0, 50, page.Width, page.Height),
             XStringFormats.TopCenter);
 
             int heightScale = 100;
@@ -194,19 +198,19 @@ namespace VendorPOS.Pages
             if (dataGridView1.Rows.Count > 1)
             {
                 gfx.DrawString("Product Name", headFont, XBrushes.Black,
-                      new XRect(0, 50, page.Width, page.Height),
+                      new XRect(0, 100, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
                 gfx.DrawString("Description", headFont, XBrushes.Black,
-                      new XRect(200, 50, page.Width, page.Height),
+                      new XRect(200, 100, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
                 gfx.DrawString("Quantity", headFont, XBrushes.Black,
-                      new XRect(400, 50, page.Width, page.Height),
+                      new XRect(400, 100, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
                 gfx.DrawString("Price", headFont, XBrushes.Black,
-                      new XRect(500, 50, page.Width, page.Height),
+                      new XRect(500, 100, page.Width, page.Height),
                       XStringFormats.TopLeft);
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -217,35 +221,32 @@ namespace VendorPOS.Pages
                     var productQuantity = row.Cells[3].Value ?? string.Empty;
 
                     gfx.DrawString(productName.ToString(), font, XBrushes.Black,
-                        new XRect(0, 0 + heightScale, page.Width, page.Height),
+                        new XRect(0, 50 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
 
                     var description = productDescription.ToString();
-
                     if (description.Length > 20)
                     {
                         description = description.Substring(0,20);
                     }
 
                     gfx.DrawString(description, font, XBrushes.Black,
-                        new XRect(200, 0 + heightScale, page.Width, page.Height),
+                        new XRect(200, 50 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
 
                     gfx.DrawString(productPrice.ToString(), font, XBrushes.Black,
-                        new XRect(400, 0 + heightScale, page.Width, page.Height),
+                        new XRect(400, 50 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
 
                     gfx.DrawString(productQuantity.ToString(), font, XBrushes.Black,
-                        new XRect(500, 0 + heightScale, page.Width, page.Height),
+                        new XRect(500, 50 + heightScale, page.Width, page.Height),
                         XStringFormats.TopLeft);
                     heightScale += 50;
                 }
             }
 
             // Save the document
-
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-
 
             saveFileDialog.Filter = "PDF File (*.pdf)|*.pdf";
             saveFileDialog.DefaultExt = ".pdf";
@@ -255,7 +256,6 @@ namespace VendorPOS.Pages
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-
                 string filename = saveFileDialog.FileName;
                 document.Save(filename);
             }
